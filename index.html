@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experience Form</title>
+    <style>
+        /* CSS styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 0.875em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Experience Form</h1>
+        <form id="experienceForm">
+            <div class="form-group">
+                <label for="years_of_experience">Years of experience</label>
+                <input type="number" id="years_of_experience" min="1" required>
+                <span class="error-message" id="error-message"></span>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        // JavaScript functionality
+        document.getElementById('experienceForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent form submission
+
+            const yearsOfExperience = document.getElementById('years_of_experience').value;
+            const errorMessage = document.getElementById('error-message');
+
+            if (yearsOfExperience < 1) {
+                errorMessage.textContent = "Years of experience must be greater than 0.";
+            } else {
+                errorMessage.textContent = ""; // Clear any existing error messages
+                console.log("Form Data:", { years_of_experience: yearsOfExperience });
+                alert("Form submitted successfully!");
+                // You can add any further form submission logic here (e.g., sending data to a server)
+            }
+        });
+    </script>
+</body>
+</html>
